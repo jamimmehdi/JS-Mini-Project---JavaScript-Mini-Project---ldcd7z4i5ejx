@@ -26,19 +26,17 @@ document.querySelector('.diceWrapper').addEventListener('click', () => {
     currDiceValue = dicevalue;
 
     document.querySelector('.dice').textContent = currDiceValue;
-    console.log(currDiceValue)
+    
     if (currPlayer == 'playerOne') {
         if (!playerOne_boardEntry) {
             if (currDiceValue == 6) {
-                console.log('works', currPlayer)
+
                 playerOne_boardEntry = true;
                 playerOneScore = 1;
 
                 let currPosition = 'one';
 
                 playerOneCurrPosition = currPosition;
-
-                console.log(playerOneCurrPosition);
 
                 //Create Player
                 let playerWrapper = document.createElement('div');
@@ -87,12 +85,10 @@ document.querySelector('.diceWrapper').addEventListener('click', () => {
                 while (newScore > 0) {
                     second = uptonineteen[newScore % 10];
                     newScore =  Math.floor(newScore / 10);
-                    console.log(newScore);
                     first = ten[newScore % 10];
                     newScore = Math.floor(newScore / 10);
                 }
                 currPosition = first + second;
-                console.log(currPosition);
             }
             playerOneCurrPosition = currPosition;
 
@@ -120,7 +116,7 @@ document.querySelector('.diceWrapper').addEventListener('click', () => {
     } else {
         if (!playerTwo_BoardEntry) {
             if (currDiceValue == 6) {
-                console.log('works', currPlayer)
+
                 playerTwo_BoardEntry = true;
                 playerTwoScore = 1;
 
@@ -172,7 +168,6 @@ document.querySelector('.diceWrapper').addEventListener('click', () => {
                 while (newScore > 0) {
                     second = uptonineteen[newScore % 10];
                     newScore =  Math.floor(newScore / 10);
-                    console.log(newScore);
                     first = ten[newScore % 10];
                     newScore = Math.floor(newScore / 10);
                 }
