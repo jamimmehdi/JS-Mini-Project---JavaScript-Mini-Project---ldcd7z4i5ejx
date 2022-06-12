@@ -244,10 +244,30 @@
     .gameWrapper {
         padding: 0.5rem;
     }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {}
+@media (max-width: 767.98px) {
+    .gameWrapper .grid-row .grid {
+        height: 2rem;
+        width: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .gameWrapper {
+        padding: 0.5rem;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {}
