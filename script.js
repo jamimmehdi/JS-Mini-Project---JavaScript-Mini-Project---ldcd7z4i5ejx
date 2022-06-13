@@ -83,6 +83,11 @@ function createPlayer() {
   document.querySelector("." + playerCurrPosition).appendChild(playerWrapper);
 }
 
+//  Change User
+function changeUser() {
+  currPlayer = currPlayer == "playerOne" ? "playerTwo" : "playerOne";
+}
+
 function move(newScore, specialMoves = false) {
   let playerPosition =
     currPlayer == "playerOne" ? playerOneCurrPosition : playerTwoCurrPosition;
@@ -227,6 +232,7 @@ function play(player_boardEntry, diceValue) {
     ) {
       move(newScore, true);
       snakeBite(newScore);
+      changeUser()
     }
     // Check for Ladderclimb
     else if (
@@ -237,6 +243,7 @@ function play(player_boardEntry, diceValue) {
     ) {
       move(newScore, true);
       ladderClimb(newScore);
+      changeUser()
     } else {
       move(newScore);
     }
@@ -268,7 +275,6 @@ function announceWinner(winner) {
 
   document.getElementById('winnerName').innerText = winnerName;
   document.querySelector('.overlay').classList.remove('hide');
-  location.reload();
 }
 
 // Roll Dice
@@ -322,4 +328,5 @@ updatePlayerTurn();
 
 document.getElementById('playAgain').addEventListener('click', () => {
   document.querySelector('.overlay').classList.add('hide');
+  location.reload();
 })
