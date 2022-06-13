@@ -328,5 +328,5 @@ updatePlayerTurn();
 
 document.getElementById('playAgain').addEventListener('click', () => {
   document.querySelector('.overlay').classList.add('hide');
-  location.reload();
+  window.location.reload();
 })
