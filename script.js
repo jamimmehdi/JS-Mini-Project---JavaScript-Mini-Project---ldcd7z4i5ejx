@@ -134,7 +134,7 @@ function move(newScore, specialMoves = false) {
 
 /* Snake bite and Ladder climb move */
 let newMove = async (newPosition) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 800));
   currPlayer == "playerOne"
     ? (playerOneScore = newPosition)
     : (playerTwoScore = newPosition);
@@ -195,7 +195,7 @@ function ladderClimb(startAt) {
   }
 }
 
-async function play(player_boardEntry, diceValue) {
+function play(player_boardEntry, diceValue) {
   if (!player_boardEntry) {
     if (diceValue == 6) {
       currPlayer == "playerOne"
@@ -232,9 +232,7 @@ async function play(player_boardEntry, diceValue) {
     ) {
       move(newScore, true);
       snakeBite(newScore);
-
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      changeUser()
+      // changeUser()
     }
     // Check for Ladderclimb
     else if (
@@ -245,9 +243,7 @@ async function play(player_boardEntry, diceValue) {
     ) {
       move(newScore, true);
       ladderClimb(newScore);
-
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      changeUser()
+      // changeUser()
     } else {
       move(newScore);
     }
@@ -284,7 +280,7 @@ function announceWinner(winner) {
 // Roll Dice
 document.querySelector(".diceWrapper").addEventListener("click", async () => {
   let dicevalue = Math.floor(Math.random() * 6 + 1);
-  currDiceValue = dicevalue;
+  currDiceValue = 6;
 
   document.querySelector(".dice").textContent = currDiceValue;
 
