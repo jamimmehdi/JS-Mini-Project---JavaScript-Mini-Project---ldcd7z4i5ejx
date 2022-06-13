@@ -29,9 +29,28 @@
   height: 100vh;
   padding: 6rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   column-gap: 1rem;
+}
+
+.boardAndDiceWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 50%;
+  margin: 10px;
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  color: var(--dark-red)
 }
 
 .boardWrapper {
@@ -295,19 +314,75 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-  .gameWrapper .grid-row .grid {
-    height: 1.5rem;
-    width: 1.5rem;
+  .boardWrapper .grid-row .grid {
+    height: 2rem;
+    width: 2rem;
     font-size: 0.9rem;
   }
 
-  .gameWrapper {
+  .boardWrapper {
     padding: 0.4rem;
+  }
+
+  .boardAndDiceWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+  .boardWrapper {
+    display: flex;
+    flex-direction: column;
   }
 
   .container {
     display: flex;
     flex-direction: column;
+  }
+
+  .playerOne {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    bottom: 0;
+  }
+  
+  .playerTwo {
+    position: absolute;
+    z-index: 3;
+    left: 15px;
+    bottom: 0;
+  }
+  
+  .head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 14px;
+    width: 14px;
+    background-color: pink;
+    border-radius: 50%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.4rem;
+  }
+  
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+  
+    border-top: 14px solid pink;
+  }
+
+  .playerName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin: 10px;
+    font-family: "Bangers", cursive;
+    font-size: 2.5rem;
   }
 }
 
