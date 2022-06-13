@@ -1,4 +1,4 @@
-//Number Arrays
+// Number Arrays
 uptonineteen = [
   "",
   "one",
@@ -38,8 +38,8 @@ ten = [
 const snakeBiteValues = {
   _43: { start: 43, end: 17 },
   _55: { start: 55, end: 8 },
-  _81: { start: 81, end: 49 },
-  _84: { start: 84, end: 58 },
+  _87: { start: 87, end: 49 },
+  _84: { start: 84, end: 63 },
   _98: { start: 98, end: 40 },
 };
 
@@ -53,11 +53,13 @@ const ladderClimbValues = {
 let currPlayer = "playerOne";
 let currDiceValue = 0;
 let playerOneScore = 0;
+let playerTwoScore = 0;
 let playerOneCurrPosition = "";
 let playerTwoCurrPosition = "";
-let playerTwoScore = 0;
 let playerOne_boardEntry = false;
 let playerTwo_BoardEntry = false;
+
+
 
 function createPlayer() {
   let playerWrapper = document.createElement("div");
@@ -145,8 +147,8 @@ function snakeBite(biteAt) {
       newMove(snakeBiteValues._55.end);
       break;
     }
-    case snakeBiteValues._81.start: {
-      newMove(snakeBiteValues._81.end);
+    case snakeBiteValues._87.start: {
+      newMove(snakeBiteValues._87.end);
       break;
     }
     case snakeBiteValues._84.start: {
@@ -214,23 +216,24 @@ function play(player_boardEntry, diceValue) {
       currPlayer == "playerOne"
         ? playerOneScore + diceValue
         : playerTwoScore + diceValue;
+
     // Check for Snakebite
     if (
-      newScore === 43 ||
-      newScore === 55 ||
-      newScore === 81 ||
-      newScore === 84 ||
-      newScore === 98
+      newScore === snakeBiteValues._43.start ||
+      newScore === snakeBiteValues._55.start ||
+      newScore === snakeBiteValues._87.start ||
+      newScore === snakeBiteValues._84.start ||
+      newScore === snakeBiteValues._98.start
     ) {
       move(newScore, true);
       snakeBite(newScore);
     }
     // Check for Ladderclimb
     else if (
-      newScore === 6 ||
-      newScore === 20 ||
-      newScore === 48 ||
-      newScore === 66
+      newScore === ladderClimbValues._6.start ||
+      newScore === ladderClimbValues._20.start ||
+      newScore === ladderClimbValues._48.start ||
+      newScore === ladderClimbValues._66.start
     ) {
       move(newScore, true);
       ladderClimb(newScore);
@@ -250,6 +253,24 @@ function updatePlayerTurn() {
   }
 }
 
+// Winner
+function checkWinner(diceValue) {
+  let currPlayerScore = currPlayer == 'playerOne' ? playerOneScore : playerTwoScore;
+  if (currPlayerScore + diceValue === 100) {
+    return true;
+  }
+  return false;
+}
+
+// Announce Winner
+function announceWinner(winner) {
+  let winnerName = winner == 'playerOne' ? "Player 1 Wins" : "Player  2 Wins"
+
+  document.getElementById('winnerName').innerText = winnerName;
+  document.querySelector('.overlay').classList.remove('hide');
+  location.reload();
+}
+
 // Roll Dice
 document.querySelector(".diceWrapper").addEventListener("click", async () => {
   let dicevalue = Math.floor(Math.random() * 6 + 1);
@@ -259,13 +280,46 @@ document.querySelector(".diceWrapper").addEventListener("click", async () => {
 
   if (currPlayer == "playerOne") {
     await new Promise((resolve) => setTimeout(resolve, 500));
-    play(playerOne_boardEntry, currDiceValue);
+
+    if (checkWinner(currDiceValue)) {
+      document.querySelector("." + playerOneCurrPosition).querySelector("." + currPlayer).remove();
+      playerOneCurrPosition = 'hundread';
+      createPlayer();
+
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      announceWinner(currPlayer);
+    } else {
+      if (currDiceValue <= (100 - playerOneScore)) {
+        play(playerOne_boardEntry, currDiceValue);
+      } else {
+        currPlayer = 'playerTwo';
+      }
+    }
+
   } else if (currPlayer == "playerTwo") {
     await new Promise((resolve) => setTimeout(resolve, 500));
-    play(playerTwo_BoardEntry, currDiceValue);
-  }
 
+    if (checkWinner(currDiceValue)) {
+      document.querySelector("." + playerTwoCurrPosition).querySelector("." + currPlayer).remove();
+      playerTwoCurrPosition = 'hundread';
+      createPlayer();
+
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      announceWinner(currPlayer);
+    } else {
+      if (currDiceValue <= (100 - playerTwoScore)) {
+        play(playerTwo_BoardEntry, currDiceValue);
+      } else {
+        currPlayer = 'playerOne'
+      }
+    }
+
+  }
   updatePlayerTurn();
 });
 
 updatePlayerTurn();
+
+document.getElementById('playAgain').addEventListener('click', () => {
+  document.querySelector('.overlay').classList.add('hide');
+})

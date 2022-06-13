@@ -22,10 +22,11 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .container {
-  height: 80vh;
+  height: 100vh;
   padding: 6rem;
   display: flex;
   justify-content: center;
@@ -51,7 +52,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-image: url(./img/background.svg);
+  background-image: url(./img/gameboard.svg);
   height: 100%;
   width: 100%;
   z-index: 2;
@@ -211,25 +212,82 @@
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.winner {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2rem;
+  font-family: "Bangers", cursive;
+  width: 320px;
+  height: 180px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  background-color: var(--dark-red);
+  font-size: 3rem;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.reloadicon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.reloadicon:hover {
+  color: rgb(225, 225, 225);
+}
+
+.hide {
+  display: none;
 }
 
 @keyframes glowing {
   0% {
     box-shadow: 0 0 -10px #ffffff;
   }
+
   40% {
     box-shadow: 0 0 20px #ffffff;
   }
+
   60% {
     box-shadow: 0 0 20px #ffffff;
   }
+
   100% {
     box-shadow: 0 0 -10px #ffffff;
   }
@@ -254,13 +312,10 @@
 }
 
 /* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-}
+@media (max-width: 767.98px) {}
 
 /* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
-}
+@media (max-width: 991.98px) {}
 
 /* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {
-}
+@media (max-width: 1199.98px) {}
