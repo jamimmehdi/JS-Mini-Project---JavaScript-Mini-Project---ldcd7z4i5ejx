@@ -195,7 +195,7 @@ function ladderClimb(startAt) {
   }
 }
 
-function play(player_boardEntry, diceValue) {
+async function play(player_boardEntry, diceValue) {
   if (!player_boardEntry) {
     if (diceValue == 6) {
       currPlayer == "playerOne"
@@ -232,6 +232,8 @@ function play(player_boardEntry, diceValue) {
     ) {
       move(newScore, true);
       snakeBite(newScore);
+
+      await new Promise((resolve) => setTimeout(resolve, 800));
       changeUser()
     }
     // Check for Ladderclimb
@@ -243,6 +245,8 @@ function play(player_boardEntry, diceValue) {
     ) {
       move(newScore, true);
       ladderClimb(newScore);
+
+      await new Promise((resolve) => setTimeout(resolve, 800));
       changeUser()
     } else {
       move(newScore);
