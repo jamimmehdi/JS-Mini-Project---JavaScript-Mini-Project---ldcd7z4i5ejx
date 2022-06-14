@@ -298,7 +298,7 @@ function addActiveGlow() {
 // Roll Dice
 document.querySelector(".diceWrapper").addEventListener("click", async () => {
   let dicevalue = Math.floor(Math.random() * 6 + 1);
-  currDiceValue = 6;
+  currDiceValue = dicevalue;
 
   document.querySelector(".dice").textContent = currDiceValue;
 
