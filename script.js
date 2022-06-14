@@ -58,24 +58,22 @@ let playerOneCurrPosition = "";
 let playerTwoCurrPosition = "";
 let playerOne_boardEntry = false;
 let playerTwo_BoardEntry = false;
+let playerOnePiece = "./img/playerOne-01.svg";
+let playerTwoPiece = "./img/playerTwo-01.svg";
 
 
 
 function createPlayer() {
   let playerWrapper = document.createElement("div");
   playerWrapper.classList.add(currPlayer);
+  playerWrapper.setAttribute('id', currPlayer);
 
-  let head = document.createElement("div");
-  head.classList.add("head");
+  let piece = document.createElement('img');
+  currPlayerPiece = currPlayer == 'playerOne' ? playerOnePiece : playerTwoPiece;
+  piece.src = currPlayerPiece;
+  
 
-  let playerName = currPlayer == "playerOne" ? "P1" : "P2";
-  head.innerText = playerName;
-
-  let arrowDown = document.createElement("div");
-  arrowDown.classList.add("arrow-down");
-
-  playerWrapper.appendChild(head);
-  playerWrapper.appendChild(arrowDown);
+  playerWrapper.appendChild(piece);
 
   /* Append current player in new grid */
   let playerCurrPosition =
@@ -140,6 +138,7 @@ function move(newScore, specialMoves = false) {
   if (!specialMoves) {
     currPlayer = currPlayer == "playerOne" ? "playerTwo" : "playerOne";
     updatePlayerTurn();
+    addActiveGlow();
   }
 }
 
@@ -222,6 +221,10 @@ function play(player_boardEntry, diceValue) {
         : (playerTwoCurrPosition = currPosition);
 
       createPlayer();
+
+      let hideHomePlayer = currPlayer == 'playerOne' ? 'home-p1' : 'home-p2';
+      document.getElementById(hideHomePlayer).classList.add('visible-hidden');
+
     } else {
       currPlayer == "playerOne"
         ? (currPlayer = "playerTwo")
@@ -278,6 +281,19 @@ function announceWinner(winner) {
   document.querySelector('.overlay').classList.remove('hide');
 }
 
+// Add Glow to current player
+function addActiveGlow() {
+  let addGlowTo = currPlayer;
+
+  let activeArrow = document.createElement('span');
+  activeArrow.classList.add('scroll-down-arrow');
+
+  let toAddGlowIn = document.getElementById(addGlowTo);
+  toAddGlowIn.prepend(activeArrow);
+}
+
+
+
 // Roll Dice
 document.querySelector(".diceWrapper").addEventListener("click", async () => {
   let dicevalue = Math.floor(Math.random() * 6 + 1);
@@ -323,6 +339,7 @@ document.querySelector(".diceWrapper").addEventListener("click", async () => {
 
   }
   updatePlayerTurn();
+  addActiveGlow();
 });
 
 updatePlayerTurn();

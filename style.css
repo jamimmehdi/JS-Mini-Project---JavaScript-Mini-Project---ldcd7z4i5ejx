@@ -172,41 +172,25 @@
   border: 1px solid black;
   position: relative;
   width: 50%;
+  background-color: var(--green);
 }
 
 .playerOne {
   position: absolute;
+  width: 22px;
   z-index: 3;
   left: 0;
   bottom: 0;
+  background: transparent;
 }
 
 .playerTwo {
   position: absolute;
+  width: 22px;
   z-index: 3;
   left: 30px;
   bottom: 0;
-}
-
-.head {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20px;
-  width: 20px;
-  background-color: pink;
-  border-radius: 50%;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 0.5rem;
-}
-
-.arrow-down {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-
-  border-top: 20px solid pink;
+  background: transparent;
 }
 
 .diceWrapper {
@@ -215,6 +199,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.visible-hidden {
+  visibility: hidden;
 }
 
 .diceWrapper .dice {
@@ -245,7 +233,52 @@
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+.scroll-down-arrow {
+  margin-top: -20px;
+  position: absolute;
+  left: 33%;
+  -webkit-animation: bounce 1000ms ease  infinite;
+	-moz-animation: bounce 1000ms ease infinite;
+	-o-animation: bounce 1000ms ease infinite;
+	animation: bounce 1000ms ease infinite;
+  -webkit-animation-timing-function: cubic-bezier(.14, .75, .2, 1.01);
+  -moz-animation-timing-function: cubic-bezier(.14, .75, .2, 1.01);
+  -ms-animation-timing-function: cubic-bezier(.14, .75, .2, 1.01);
+  animation-timing-function: cubic-bezier(.14, .75, .2, 1.01);
+  border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 8px solid #f2f2f2; 
+  content: "";
+  background-color: transparent;
+}
+.button.scroll:before {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 3px white, inset 0px 0px 3px white;
+  padding: 2px;
+  z-index: -1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: block;
+  content: "";
+  -webkit-animation: ring 1s alternate 0s infinite;
+	-moz-animation: ring 1s alternate 0s infinite;
+	-o-animation: ring 1s linear 0s infinite;
+	animation: ring 1s linear 0s infinite;
+}
 
+@-webkit-keyframes bounce {
+  0%, 100% {top: 9px; opacity: 0.5}
+  25% {top: 12px; opacity: 1}
+  50% {opacity: 0.8}
+}
+@keyframes bounce {
+  0%, 100% {top: 9px; opacity: 0.5}
+  25% {top: 12px; opacity: 1}
+  50% {opacity: 0.8}
+}
 
 .overlay {
   position: absolute;
@@ -340,6 +373,7 @@
 
   .playerOne {
     position: absolute;
+    width: 10px;
     z-index: 3;
     left: 0;
     bottom: 0;
@@ -347,30 +381,10 @@
   
   .playerTwo {
     position: absolute;
+    width: 10px;
     z-index: 3;
     left: 15px;
     bottom: 0;
-  }
-  
-  .head {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 14px;
-    width: 14px;
-    background-color: pink;
-    border-radius: 50%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 0.4rem;
-  }
-  
-  .arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-  
-    border-top: 14px solid pink;
   }
 
   .playerName {
@@ -381,6 +395,16 @@
     width: 100%;
     font-family: "Bangers", cursive;
     font-size: 2.5rem;
+  }
+
+  .scroll-down-arrow {
+    margin-top: -20px;
+    left: 0;
+  }
+
+  .button.scroll:before {
+    width: 15px;
+    height: 15px;
   }
 }
 
