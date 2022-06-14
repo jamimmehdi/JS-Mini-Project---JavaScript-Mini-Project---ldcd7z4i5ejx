@@ -283,13 +283,14 @@ function announceWinner(winner) {
 
 // Add Glow to current player
 function addActiveGlow() {
-  let addGlowTo = currPlayer;
+  let addGlowPlayer = currPlayer;
 
   let activeArrow = document.createElement('span');
   activeArrow.classList.add('scroll-down-arrow');
 
-  let toAddGlowIn = document.getElementById(addGlowTo);
-  toAddGlowIn.prepend(activeArrow);
+  let AddGlowIn = document.getElementById(addGlowPlayer);
+  AddGlowIn.prepend(activeArrow);
+
 }
 
 
@@ -297,7 +298,7 @@ function addActiveGlow() {
 // Roll Dice
 document.querySelector(".diceWrapper").addEventListener("click", async () => {
   let dicevalue = Math.floor(Math.random() * 6 + 1);
-  currDiceValue = dicevalue;
+  currDiceValue = 6;
 
   document.querySelector(".dice").textContent = currDiceValue;
 
@@ -333,7 +334,7 @@ document.querySelector(".diceWrapper").addEventListener("click", async () => {
       if (currDiceValue <= (100 - playerTwoScore)) {
         play(playerTwo_BoardEntry, currDiceValue);
       } else {
-        currPlayer = 'playerOne'
+        currPlayer = 'playerOne';
       }
     }
 
