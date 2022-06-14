@@ -88,6 +88,16 @@ function changeUser() {
   currPlayer = currPlayer == "playerOne" ? "playerTwo" : "playerOne";
 }
 
+function updatePlayerTurn() {
+  let nextPlayer = currPlayer == "playerOne" ? "p1" : "p2";
+
+  if (nextPlayer == "p1") {
+    document.querySelector(".playerName").innerText = "Player 1 Turn";
+  } else {
+    document.querySelector(".playerName").innerText = "Player 2 Turn";
+  }
+}
+
 function move(newScore, specialMoves = false) {
   let playerPosition =
     currPlayer == "playerOne" ? playerOneCurrPosition : playerTwoCurrPosition;
@@ -129,6 +139,7 @@ function move(newScore, specialMoves = false) {
 
   if (!specialMoves) {
     currPlayer = currPlayer == "playerOne" ? "playerTwo" : "playerOne";
+    updatePlayerTurn();
   }
 }
 
@@ -250,16 +261,6 @@ function play(player_boardEntry, diceValue) {
   }
 }
 
-function updatePlayerTurn() {
-  let nextPlayer = currPlayer == "playerOne" ? "p1" : "p2";
-
-  if (nextPlayer == "p1") {
-    document.querySelector(".playerName").innerText = "Player 1 Turn";
-  } else {
-    document.querySelector(".playerName").innerText = "Player 2 Turn";
-  }
-}
-
 // Winner
 function checkWinner(diceValue) {
   let currPlayerScore = currPlayer == 'playerOne' ? playerOneScore : playerTwoScore;
@@ -280,7 +281,7 @@ function announceWinner(winner) {
 // Roll Dice
 document.querySelector(".diceWrapper").addEventListener("click", async () => {
   let dicevalue = Math.floor(Math.random() * 6 + 1);
-  currDiceValue = dicevalue;
+  currDiceValue = 6;
 
   document.querySelector(".dice").textContent = currDiceValue;
 
