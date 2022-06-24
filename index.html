@@ -11,7 +11,6 @@
 
 <body>
   <div class="container">
-
     <div class="boardAndDiceWrapper">
       <div class="boardWrapper">
         <div class="background"></div>
@@ -25,7 +24,7 @@
           <div class="grid dark-pink ninetyseven">97</div>
           <div class="grid light-pink ninetyeight">98</div>
           <div class="grid dark-pink ninetynine">99</div>
-          <div class="grid light-pink hundread">100</div>
+          <div class="grid light-pink hundread">100 <span class="tag">WINNER</span></div>
         </div>
 
         <div class="grid-row flex">
@@ -125,7 +124,7 @@
           <div class="grid light-pink twenty">20</div>
         </div>
         <div class="grid-row flex">
-          <div class="grid dark-pink one">1</div>
+          <div class="grid dark-pink one">1 <span class="tag">START</span></div>
           <div class="grid light-pink two">2</div>
           <div class="grid dark-pink three">3</div>
           <div class="grid light-pink four">4</div>
@@ -139,7 +138,8 @@
       </div>
       <div>
         <div class="playerName"></div>
-        <div class="diceContainer">
+        
+        <div class="dice-container">
           <div class="playerWrapper">
             <div id="home-p1" class="playerOne">
               <img src="./img/playerOne-01.svg" alt="">
@@ -148,13 +148,14 @@
               <img src="./img/playerTwo-01.svg" alt="">
             </div>
           </div>
-          <div class="diceWrapper">
-            <div class="dice noselect">5</div>
+          <div class="dice-wrapper">
+            <img id="dice" src="./img/dice-01.svg">
           </div>
+          <p id="total"></p>
+          <button onclick="roll()">ROLL THE DICE</button>
         </div>
       </div>
     </div>
-
   </div>
   <div class="overlay hide">
     <div class="winner">

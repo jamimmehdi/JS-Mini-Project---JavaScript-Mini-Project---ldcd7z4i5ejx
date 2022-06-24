@@ -35,6 +35,13 @@ ten = [
   "ninety",
 ];
 
+const images = ["img/dice-01.svg",
+  "img/dice-02.svg",
+  "img/dice-03.svg",
+  "img/dice-04.svg",
+  "img/dice-05.svg",
+  "img/dice-06.svg"];
+
 const snakeBiteValues = {
   _43: { start: 43, end: 17 },
   _55: { start: 55, end: 8 },
@@ -60,6 +67,8 @@ let playerOne_boardEntry = false;
 let playerTwo_BoardEntry = false;
 let playerOnePiece = "./img/playerOne-01.svg";
 let playerTwoPiece = "./img/playerTwo-01.svg";
+let playerOneName;
+let playerTwoName;
 
 
 
@@ -71,7 +80,7 @@ function createPlayer() {
   let piece = document.createElement('img');
   currPlayerPiece = currPlayer == 'playerOne' ? playerOnePiece : playerTwoPiece;
   piece.src = currPlayerPiece;
-  
+
 
   playerWrapper.appendChild(piece);
 
@@ -267,6 +276,7 @@ function play(player_boardEntry, diceValue) {
 
 // Winner
 function checkWinner(diceValue) {
+
   let currPlayerScore = currPlayer == 'playerOne' ? playerOneScore : playerTwoScore;
   if (currPlayerScore + diceValue === 100) {
     return true;
@@ -291,17 +301,11 @@ function addActiveGlow() {
 
   let AddGlowIn = document.getElementById(addGlowPlayer);
   AddGlowIn.prepend(activeArrow);
-
 }
 
-
-
-// Roll Dice
-document.querySelector(".diceWrapper").addEventListener("click", async () => {
-  let dicevalue = Math.floor(Math.random() * 6 + 1);
-  currDiceValue = dicevalue;
-
-  document.querySelector(".dice").textContent = currDiceValue;
+// Set Player
+async function setPlayer(diceValue) {
+  currDiceValue = diceValue;
 
   if (currPlayer == "playerOne") {
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -342,9 +346,37 @@ document.querySelector(".diceWrapper").addEventListener("click", async () => {
   }
   updatePlayerTurn();
   addActiveGlow();
-});
+}
 
 updatePlayerTurn();
+
+// Roll Dice
+async function roll() {
+  document.querySelector('button').removeAttribute('onclick')
+  let dice = document.querySelectorAll("#dice");
+  let diceValue = Math.floor(Math.random() * 6 + 1);
+  dice.forEach(function (die) {
+    die.classList.add("shake");
+  });
+  
+
+  setTimeout(function () {
+    dice.forEach(function (die) {
+      die.classList.remove("shake");
+    });
+    
+    document.querySelector("#dice").setAttribute("src", images[diceValue - 1]);
+    document.querySelector("#total").innerHTML = "Your roll is " + ((diceValue));
+  },
+    1000
+  );
+
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+
+  setPlayer(diceValue);
+
+  document.querySelector('button').setAttribute('onclick', "roll()");
+}
 
 document.getElementById('playAgain').addEventListener('click', () => {
   document.querySelector('.overlay').classList.add('hide');
