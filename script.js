@@ -205,6 +205,7 @@ function ladderClimb(startAt) {
   }
 }
 
+// Initial Play
 function play(player_boardEntry, diceValue) {
   if (!player_boardEntry) {
     if (diceValue == 6) {

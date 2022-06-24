@@ -4,19 +4,20 @@
   --blue: #2face2;
   --light-blue: #92d7f8;
   --dark-blue: #2294d2;
-  --green: #a7cd3a;
-  --light-green: #d3e189;
-  --dark-green: #12a64e;
-  --orange: #f68122;
-  --light-orange: #ffcb03;
-  --yellow: #fdef14;
   --red: #de2427;
   --light-red: #e7605d;
   --dark-red: #b32026;
-  --purple: #a077b3;
-  --light-purple: #ca9fca;
-  --dark-purple: #6b4389;
   --background-wood: #c9822d;
+  --dark-pink: #dea3a2;
+  --light-pink: #f8e7e8;
+}
+
+.dark-pink {
+  background-color: var(--dark-pink);
+}
+
+.light-pink {
+  background-color: var(--light-pink);
 }
 
 * {
@@ -53,14 +54,13 @@
 }
 
 .boardWrapper {
-  border: 1px solid black;
   width: fit-content;
   display: flex;
   flex-direction: column;
   font-family: "Bangers", cursive;
-  font-size: 2rem;
-  padding: 1.25rem;
-  background-color: var(--background-wood);
+  font-size: 1.5rem;
+  padding: 0;
+  /* background-color: gray; */
   border: 8px solid #383633;
   border-radius: 10px;
   position: relative;
@@ -78,14 +78,20 @@
 
 .boardWrapper .grid-row .grid {
   position: relative;
+  padding: 10px 10px;
   height: 4rem;
   width: 4rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
-    1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  justify-content: flex-end;
+  align-items: top;
+  color: balck;
+  border-top: 1px solid rgb(113, 113, 113);
+  border-left: 1px solid rgb(113, 113, 113);
+  border-bottom: 1px solid rgb(46, 46, 46);
+  border-right: 1px solid rgb(46, 46, 46);
+  /* background-color: white; */
+  /* text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
+    1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; */
 }
 
 .flex-reverse {
@@ -95,62 +101,6 @@
 
 .flex {
   display: flex;
-}
-
-.blue {
-  background-color: var(--blue);
-}
-
-.light-blue {
-  background-color: var(--light-blue);
-}
-
-.dark-blue {
-  background-color: var(--dark-blue);
-}
-
-.green {
-  background-color: var(--green);
-}
-
-.light-green {
-  background-color: var(--light-green);
-}
-
-.dark-green {
-  background-color: var(--dark-green);
-}
-
-.orange {
-  background-color: var(--orange);
-}
-
-.yellow {
-  background-color: var(--yellow);
-}
-
-.light-orange {
-  background-color: var(--light-orange);
-}
-
-.red {
-  background-color: var(--red);
-}
-
-.light-red {
-  background-color: var(--light-red);
-}
-
-.dark-red {
-  background-color: var(--dark-red);
-}
-
-.purple {
-  background-color: var(--purple);
-}
-
-.light-purple {
-  background-color: var(--light-purple);
 }
 
 .dark-purple {
