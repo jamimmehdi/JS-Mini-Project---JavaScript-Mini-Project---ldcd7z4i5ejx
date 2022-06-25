@@ -62,7 +62,6 @@
 .lower-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -401,13 +400,18 @@ button {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .boardWrapper .grid-row .grid {
+    padding-top: 4px;
+    padding-right: 4px;
     height: 2rem;
     width: 2rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: end;
+    align-items: top;
   }
 
   .boardWrapper {
-    padding: 0.4rem;
+    padding: 0;
   }
 
   .boardAndDiceWrapper {
@@ -428,7 +432,7 @@ button {
 
   .playerOne {
     position: absolute;
-    width: 10px;
+    width: 12px;
     z-index: 3;
     left: 0;
     bottom: 0;
@@ -436,7 +440,7 @@ button {
 
   .playerTwo {
     position: absolute;
-    width: 10px;
+    width: 12px;
     z-index: 3;
     left: 15px;
     bottom: 0;
