@@ -11,6 +11,13 @@
   --dark-pink: #dea3a2;
   --light-pink: #f8e7e8;
 }
+.red {
+  color: var(--red);
+}
+
+.blue {
+  color: #2face2;
+}
 
 .dark-pink {
   background-color: var(--dark-pink);
@@ -42,13 +49,28 @@
   box-shadow: 0 15px 25px rgba(50, 50, 50, 0.15);
   border-radius: 8px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   font-family: "Poppins", sans-serif;
 }
 
+#dice {
+  height: 50px;
+  width: 50px;
+}
+
+.list {
+  font-size: 0.8rem;
+}
+
+.lower-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .dice-wrapper {
-  width: 90%;
+  /* width: 90%; */
   display: flex;
   justify-content: space-around;
 }
@@ -65,7 +87,7 @@ button {
   outline: none;
   color: #ffffff;
   padding: 15px 0;
-  width: 150px;
+  width: 180px;
   letter-spacing: 1px;
   border-radius: 5px;
   cursor: pointer;
@@ -104,7 +126,7 @@ button {
   width: 100%;
   font-family: "Bangers", cursive;
   font-size: 2rem;
-  color: var(--dark-red)
+  /* color: var(--dark-red) */
 }
 
 .boardWrapper {
@@ -170,10 +192,10 @@ button {
 }
 
 .playerWrapper {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
   height: 50px;
-  width: 100%;
+  width: 100px;
   
 }
 

@@ -95,13 +95,18 @@ function changeUser() {
   currPlayer = currPlayer == "playerOne" ? "playerTwo" : "playerOne";
 }
 
+// Update player name
 function updatePlayerTurn() {
   let nextPlayer = currPlayer == "playerOne" ? "p1" : "p2";
 
   if (nextPlayer == "p1") {
     document.querySelector(".playerName").innerText = "Player 1 Turn";
+    document.querySelector(".playerName").classList.toggle('blue');
+    document.querySelector(".playerName").classList.toggle('red');
   } else {
     document.querySelector(".playerName").innerText = "Player 2 Turn";
+    document.querySelector(".playerName").classList.toggle('blue');
+    document.querySelector(".playerName").classList.toggle('red');
   }
 }
 
@@ -276,7 +281,6 @@ function play(player_boardEntry, diceValue) {
 
 // Winner
 function checkWinner(diceValue) {
-
   let currPlayerScore = currPlayer == 'playerOne' ? playerOneScore : playerTwoScore;
   if (currPlayerScore + diceValue === 100) {
     return true;
@@ -355,10 +359,10 @@ async function roll() {
   document.querySelector('button').removeAttribute('onclick')
   let dice = document.querySelectorAll("#dice");
   let diceValue = Math.floor(Math.random() * 6 + 1);
+
   dice.forEach(function (die) {
     die.classList.add("shake");
   });
-  
 
   setTimeout(function () {
     dice.forEach(function (die) {
@@ -366,15 +370,13 @@ async function roll() {
     });
     
     document.querySelector("#dice").setAttribute("src", images[diceValue - 1]);
-    document.querySelector("#total").innerHTML = "Your roll is " + ((diceValue));
+    // document.querySelector("#total").innerHTML = "Your roll is " + ((diceValue));
   },
     1000
   );
 
   await new Promise((resolve) => setTimeout(resolve, 1200));
-
   setPlayer(diceValue);
-
   document.querySelector('button').setAttribute('onclick', "roll()");
 }
 

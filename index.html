@@ -136,21 +136,27 @@
           <div class="grid light-pink ten">10</div>
         </div>
       </div>
-      <div>
-        <div class="playerName"></div>
-        <div class="dice-container">
-          <div class="playerWrapper">
-            <div id="home-p1" class="playerOne">
-              <img src="./img/playerOne-01.svg" alt="">
-            </div>
-            <div id="home-p2" class="playerTwo">
-              <img src="./img/playerTwo-01.svg" alt="">
-            </div>
+      <div class="lower-container">
+        <div class="game-rules">
+          <code>
+            <h3>Game Rules</h3>
+            <p class="list">1. Player must get 6 on die roll to take entry to board.</p>
+            <p class="list">2. On getting 6 for first time player enter board and gets an additional chance to roll the die.</p>
+        </code>
+        </div>
+        <div class="playerName red"></div>
+        <div class="playerWrapper">
+          <div id="home-p1" class="playerOne">
+            <img src="./img/playerOne-01.svg" alt="">
           </div>
+          <div id="home-p2" class="playerTwo">
+            <img src="./img/playerTwo-01.svg" alt="">
+          </div>
+        </div>
+        <div class="dice-container">
           <div class="dice-wrapper">
             <img id="dice" src="./img/dice-01.svg">
           </div>
-          <p id="total"></p>
           <button onclick="roll()">ROLL THE DICE</button>
         </div>
       </div>
