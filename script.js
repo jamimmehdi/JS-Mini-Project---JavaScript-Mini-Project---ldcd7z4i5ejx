@@ -101,12 +101,12 @@ function updatePlayerTurn() {
 
   if (nextPlayer == "p1") {
     document.querySelector(".playerName").innerText = "Player 1 Turn";
-    document.querySelector(".playerName").classList.toggle('blue');
-    document.querySelector(".playerName").classList.toggle('red');
+    document.querySelector(".playerName").classList.remove('blue');
+    document.querySelector(".playerName").classList.add('red');
   } else {
     document.querySelector(".playerName").innerText = "Player 2 Turn";
-    document.querySelector(".playerName").classList.toggle('blue');
-    document.querySelector(".playerName").classList.toggle('red');
+    document.querySelector(".playerName").classList.add('blue');
+    document.querySelector(".playerName").classList.remove('red');
   }
 }
 
@@ -370,7 +370,6 @@ async function roll() {
     });
     
     document.querySelector("#dice").setAttribute("src", images[diceValue - 1]);
-    // document.querySelector("#total").innerHTML = "Your roll is " + ((diceValue));
   },
     1000
   );

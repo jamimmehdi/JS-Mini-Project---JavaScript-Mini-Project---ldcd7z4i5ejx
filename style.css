@@ -44,12 +44,9 @@
 }
 
 .dice-container {
-  padding: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 15px 25px rgba(50, 50, 50, 0.15);
-  border-radius: 8px;
   display: flex;
   align-items: center;
+  column-gap: 2rem;
   font-family: "Poppins", sans-serif;
 }
 
@@ -67,6 +64,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.inside-wrapper {
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 15px 25px rgba(50, 50, 50, 0.15);
+  border-radius: 8px;
 }
 
 .dice-wrapper {
@@ -87,7 +91,7 @@ button {
   outline: none;
   color: #ffffff;
   padding: 15px 0;
-  width: 180px;
+  width: 150px;
   letter-spacing: 1px;
   border-radius: 5px;
   cursor: pointer;
